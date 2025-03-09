@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarGuy Poster Download</title>
+    <style>
+        body {
+            font-family: serif, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #0A0e1a;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            width: 100%;
+            background-color: #0A0e1a;
+            padding: 15px 20px;
+            position: fixed;
+            top: -40px;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 100px;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .menu {
+            font-size: 25px;
+            cursor: pointer;
+            color: #ffffff;
+            padding: 35px;
+        }
+
+        /* CarGuy Logo */
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #c4a857;
+            margin-top: 80px;
+        }
+
+        /* Form */
+        form {
+            margin-top: 20px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #c4a857;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        #message {
+            margin-top: 15px;
+            color: green;
+            font-weight: bold;
+        }
+
+        /* Social Media Buttons */
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+        }
+
+        .social-icons img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer Section */
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 50px; /* To make room for social media buttons */
+        }
+
+        h2{
+            color: #c4a857;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="title">CarGuy</div> <!-- Title on the left -->
+        <div class="menu">☰</div>  <!-- Hamburger Menu (on the right) -->
+    </div>
+
+    <div class="container">
+        <!-- CarGuy Logo -->
+        <img src="CarGuy._20250126_200542_0000.png" alt="CarGuy Logo" class="logo">
+
+        <h2>Get Your First Free Poster!</h2>
+        <h2>Lamborghini Huracán STO</h2>
+
+        <!-- Email Form for Poster Download -->
+        <form id="posterForm">
+            <input type="email" id="userEmail" placeholder="Enter your email" required>
+            <button type="submit">Get Poster</button>
+        </form>
+
+        <p id="message"></p>
+    </div>
+
+    <!-- Social Media Buttons at the Bottom -->
+    <div class="social-icons">
+        <a href="https://www.instagram.com/carguy_poster?igsh=N3VoMG5jNnF0bmdw" target="_blank">
+            <img src="vecteezy_instagram-logo-png-instagram-icon-transparent_18930415.png" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@carguy_poster?_t=ZN-8u782t8Xep4&_r=1" target="_blank">
+            <img src="vecteezy_tiktok-logo-png-tikok-icon-transparent-png-tikok-app-logo-png_18930463.png" alt="TikTok">
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 CarGuy. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS User ID
+        })();
+
+        document.getElementById("posterForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var userEmail = document.getElementById("userEmail").value;
+            
+            emailjs.send("service_yawkmqe", "template_yvcf5sb", {
+                to_email: userEmail,
+                poster_link: "https://drive.google.com/file/d/1vaKCVnz-H2jKdHwc8BGg_m0aHtMK8fxP/view?usp=sharing" // Replace with your actual poster link
+            })
+            .then(function(response) {
+                document.getElementById("message").innerText = "Thank you! Your download is ready.";
+            }, function(error) {
+                document.getElementById("message").innerText = "Failed to send email. Try again.";
+            });
+        });
+    </script>
+
+</body>
+</html>
